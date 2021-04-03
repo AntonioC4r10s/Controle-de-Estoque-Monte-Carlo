@@ -1,12 +1,11 @@
 import tkinter as tk
+from  tkinter import ttk
 from lib.gestorDeDados import geraDados
-from lib.ferramentas import *
 
 #Funções:
 def geraNovosDados(numeroDeProdutos):
     geraDados(numeroDeProdutos)
     #restart_program()
-
 
 #Janela principal
 janela = tk.Tk()
@@ -27,5 +26,9 @@ numeroDeProdutos = 20
 botao1 = tk.Button(master=container2, text="Gerar", width=10, height=15, command=lambda: geraNovosDados(numeroDeProdutos)).pack(side=tk.LEFT, padx=largura*0.025, pady=2)
 botao2 = tk.Button(master=container2, text="Grafico 1", width=10, height=15).pack(side=tk.LEFT, padx=largura/4 + largura*0.025, pady=2)
 botao3 = tk.Button(master=container2, text="Grafico 2", width=10, height=15).pack(side=tk.RIGHT, padx=largura*0.025, pady=2)
+
+#tabela
+tree = ttk.Treeview(container1, selectmode="browse", column=["column1","column2","column3","column4","column5",
+                                                             "column6","column7","column8","column9","column10","column11"])
 
 tk.mainloop()

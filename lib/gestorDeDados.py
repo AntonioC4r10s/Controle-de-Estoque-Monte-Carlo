@@ -47,7 +47,15 @@ def geraDados(numeroDeProdutos):
         estoqueIdeal = ("{0:.2f}".format(estoqueIdeal))
 
         w.writerow([id, mes_1, mes_2, mes_3, mes_4, mes_5, mes_6, total, classificacao, mediaDia, estoqueIdeal])
-
     file.close()
-
     #restart_program()
+
+
+def csvParaLista():
+    file = open('estoque.csv', 'r')
+    reader = csv.reader(file)
+    lista = []
+
+    for linha in reader:
+        lista.append(linha)
+    return lista
