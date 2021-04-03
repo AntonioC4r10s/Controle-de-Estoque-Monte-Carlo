@@ -4,9 +4,7 @@ import random
 def numAleatorio(a, b):
     return random.randint(a, b)
 
-def geraDados(numeroDeProdutos):
-    # abre ou cria o arquivo
-    file = open('estoque.csv', 'w', newline='', encoding='utf-8')
+def geraDados(numeroDeProdutos, file):
     # cria o objeto de gravação
     w = csv.writer(file)
 
@@ -45,6 +43,10 @@ def geraDados(numeroDeProdutos):
         estoqueIdeal = ("{0:.2f}".format(estoqueIdeal))
 
         w.writerow([id, mes_1, mes_2, mes_3, mes_4, mes_5, mes_6, total, classificacao, mediaDia, estoqueIdeal])
-    file.close()
 
-#geraDados(10)
+
+
+
+file = open('estoque.csv', 'w', newline='', encoding='utf-8')
+geraDados(10, file)
+file.close()
