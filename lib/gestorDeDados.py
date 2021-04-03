@@ -1,10 +1,14 @@
 import csv
 import random
 
+#Gerar um unmero aleatorio entre a e b.
 def numAleatorio(a, b):
     return random.randint(a, b)
 
-def geraDados(numeroDeProdutos, file):
+#Geraar uma planilha de dados de estoque
+def geraDados(numeroDeProdutos):
+    file = open('estoque.csv', 'w', newline='', encoding='utf-8')
+
     # cria o objeto de gravação
     w = csv.writer(file)
 
@@ -44,9 +48,6 @@ def geraDados(numeroDeProdutos, file):
 
         w.writerow([id, mes_1, mes_2, mes_3, mes_4, mes_5, mes_6, total, classificacao, mediaDia, estoqueIdeal])
 
+    file.close()
 
-
-
-file = open('estoque.csv', 'w', newline='', encoding='utf-8')
-geraDados(10, file)
-file.close()
+    #restart_program()
