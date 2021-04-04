@@ -7,7 +7,7 @@ def numAleatorio(a, b):
 
 #Geraar uma planilha de dados de estoque
 def geraDados(numeroDeProdutos):
-    file = open('estoque.csv', 'w', newline='', encoding='utf-8')
+    file = open('../src/estoque.csv', 'w', newline='', encoding='utf-8')
 
     # cria o objeto de gravação
     w = csv.writer(file)
@@ -52,7 +52,7 @@ def geraDados(numeroDeProdutos):
 
 
 def csvParaLista():
-    file = open('estoque.csv', 'r')
+    file = open('../src/estoque.csv', 'r')
     reader = csv.reader(file)
     lista = []
 
