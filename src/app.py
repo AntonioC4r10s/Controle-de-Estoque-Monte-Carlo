@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from lib.gestorDeDados import *
+from matplotlib import pyplot as plt
 
 #Janela principal
 janela = tk.Tk()
@@ -41,7 +42,7 @@ my_tree.pack(pady=20)
 container = tk.Frame(master=janela, bg="white", pady=2).pack()
 
 #Botões.
-botao1 = tk.Button(master=container, text="Grafico 2", width=10, height=15).pack(side=tk.RIGHT)
+botao1 = tk.Button(master=container, text="Grafico 2", width=10, height=15, command=lambda: grafico1(lista)).pack(side=tk.RIGHT)
 botao2 = tk.Button(master=container, text="Grafico 1", width=10, height=15).pack(side=tk.RIGHT,padx=2)
 botao3 = tk.Button(master=container, text="Gerar", width=10, height=15, command=lambda: geraNovosDados(numeroDeProdutos)).pack(side=tk.RIGHT)
 
@@ -49,5 +50,26 @@ botao3 = tk.Button(master=container, text="Gerar", width=10, height=15, command=
 def geraNovosDados(numeroDeProdutos):
     geraDados(numeroDeProdutos)
     #restart_program()
+
+#Gerar grafico de proporção de produtos tipo A, B e C.
+def grafico1(lista):
+    grupos = ["A", "B", "C"]
+    A = 0
+    B = 0
+    C = 0
+
+    #print(lista[1][8])
+    for i in range(1, len(lista)):
+        if(lista[i][8] == "A"):
+            A += 1
+        if (lista[i][8] == "B"):
+            B += 1
+        else:
+            C += 1
+    valores = [A, B, C]
+    plt.bar(grupos, valores)
+    plt.xlabel("Classificação")
+    plt.ylabel("Proporção")
+    plt.show()
 
 tk.mainloop()
