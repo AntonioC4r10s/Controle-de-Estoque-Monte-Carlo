@@ -1,5 +1,8 @@
 import csv
 import random
+from matplotlib import pyplot as plt
+import tkinter as tk
+from tkinter import ttk
 
 #Gerar um unmero aleatorio entre a e b.
 def numAleatorio(a, b):
@@ -15,7 +18,7 @@ def geraDados(numeroDeProdutos):
     w.writerow(['Produto', '1', '2', '3', '4', '5', '6', 'Total', 'Classificacao', 'Media Dia',
                 'Estoque Ideal'])
 
-    numeroDeProdutosMax = 20
+    numeroDeProdutosMax = 40
 
     for i in range(numeroDeProdutos):
         id = i+1
@@ -60,5 +63,45 @@ def csvParaLista():
         lista.append(linha)
     return lista
 
+#Gerar grafico de proporção de produtos tipo A, B e C.
+def grafico1():
+    grupos = ["A", "B", "C"]
+    A = 0
+    B = 0
+    C = 0
+
+    lista = csvParaLista()
+
+    for i in range(1, len(lista)):
+        if(lista[i][8] == "A"):
+            A += 1
+        elif (lista[i][8] == "B"):
+            B += 1
+        else:
+            C += 1
+    valores = [A, B, C]
+    #print(valores)
+    plt.bar(grupos, valores)
+    plt.xlabel("Classificação")
+    plt.ylabel("Proporção")
+    plt.show()
+
+#Funções:
+def geraNovosDados(numeroDeProdutos, my_tree):
+    geraDados(numeroDeProdutos)
+    lista = csvParaLista()
+
+    # Adicionando intens na Tree.
+    for i in range(1, len(lista)):
+        listaAux = []
+        for j in range(1, len(lista[i])):
+            listaAux.append(lista[i][j])
+        my_tree.item(i, text=lista[i][0], values=listaAux)
+
+
+
+
 cont = ["#0", "#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8", "#9", "#10", "#11", "#12", "#13", "#14", "#15", "#16", "#17", "#18", "#19", "#20"]
 #print(csvParaLista()[0])
+
+#print(geraNovosDados(10, my_tree))

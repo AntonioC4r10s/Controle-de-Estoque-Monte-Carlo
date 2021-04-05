@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
 from lib.gestorDeDados import *
-from matplotlib import pyplot as plt
 
 #Janela principal
 janela = tk.Tk()
@@ -29,8 +28,8 @@ for i in range(0, len(lista[0])):
         if(i>11):
             break
         my_tree.column(cont[i], width=77, minwidth=25)
-        my_tree.heading(cont[i], text=lista[0][i], anchor=tk.CENTER)
-
+        my_tree.heading(cont[i], text=lista[0][i], anchor=tk.N)
+#Adicionando intens na Tree.
 for i in range(1, len(lista)):
     listaAux = []
     for j in range(1, len(lista[i])):
@@ -38,38 +37,14 @@ for i in range(1, len(lista)):
     my_tree.insert(parent="", index='end', iid=i, text=lista[i][0], values=listaAux)
 my_tree.pack(pady=20)
 
+#my_tree.item(1, values="0")
+
 #Container para armazenar os botões.
 container = tk.Frame(master=janela, bg="white", pady=2).pack()
 
 #Botões.
-botao1 = tk.Button(master=container, text="Grafico 2", width=10, height=15, command=lambda: grafico1(lista)).pack(side=tk.RIGHT)
-botao2 = tk.Button(master=container, text="Grafico 1", width=10, height=15).pack(side=tk.RIGHT,padx=2)
-botao3 = tk.Button(master=container, text="Gerar", width=10, height=15, command=lambda: geraNovosDados(numeroDeProdutos)).pack(side=tk.RIGHT)
-
-#Funções:
-def geraNovosDados(numeroDeProdutos):
-    geraDados(numeroDeProdutos)
-    #restart_program()
-
-#Gerar grafico de proporção de produtos tipo A, B e C.
-def grafico1(lista):
-    grupos = ["A", "B", "C"]
-    A = 0
-    B = 0
-    C = 0
-
-    #print(lista[1][8])
-    for i in range(1, len(lista)):
-        if(lista[i][8] == "A"):
-            A += 1
-        if (lista[i][8] == "B"):
-            B += 1
-        else:
-            C += 1
-    valores = [A, B, C]
-    plt.bar(grupos, valores)
-    plt.xlabel("Classificação")
-    plt.ylabel("Proporção")
-    plt.show()
+botao1 = tk.Button(master=container, text="Grafico 2", width=10, height=15, command=lambda: grafico1()).pack(side=tk.RIGHT)
+botao2 = tk.Button(master=container, text="Grafico 1", width=10, height=15).pack(side=tk.RIGHT, padx=2)
+botao3 = tk.Button(master=container, text="Gerar", width=10, height=15, command=lambda: geraNovosDados(numeroDeProdutos, my_tree)).pack(side=tk.RIGHT)
 
 tk.mainloop()
