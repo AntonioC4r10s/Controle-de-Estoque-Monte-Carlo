@@ -98,8 +98,38 @@ def geraNovosDados(numeroDeProdutos, my_tree):
             listaAux.append(lista[i][j])
         my_tree.item(i, text=lista[i][0], values=listaAux)
 
+#Gerar grafico de Tradicional x MC
+def grafico2():
+    lista = csvParaLista()
 
+    mes_1 = 0
+    mes_2 = 0
+    mes_3 = 0
+    mes_4 = 0
+    mes_5 = 0
+    mes_6 = 0
+    meses =  [1,2,3,4,5,6]
+    distNormal = [mes_1, mes_2, mes_3, mes_4, mes_5, mes_6]
+    distMC = []
+    somaMC = 0
+    for i in range(1, len(lista)):
+        distNormal[0] += int(lista[i][1])
+        distNormal[1] += int(lista[i][2])
+        distNormal[2] += int(lista[i][3])
+        distNormal[3] += int(lista[i][4])
+        distNormal[4] += int(lista[i][5])
+        distNormal[5] += int(lista[i][6])
+        somaMC += (float)(lista[i][10])
 
+    for i in range(0, len(meses)):
+        distMC.append(somaMC)
+
+    plt.plot(meses, distNormal, color="red")
+    plt.plot(meses, distMC, color="blue")
+    plt.xlabel("Tempo - (mês)")
+    plt.ylabel("Nº de Produtos")
+    plt.title("Tradicional x MC")
+    plt.show()
 
 cont = ["#0", "#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8", "#9", "#10", "#11", "#12", "#13", "#14", "#15", "#16", "#17", "#18", "#19", "#20"]
 #print(csvParaLista()[0])

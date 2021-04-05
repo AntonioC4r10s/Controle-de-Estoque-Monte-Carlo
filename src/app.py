@@ -1,5 +1,3 @@
-import tkinter as tk
-from tkinter import ttk
 from lib.gestorDeDados import *
 
 #Janela principal
@@ -44,7 +42,7 @@ container = tk.Frame(master=janela, bg="white", pady=2).pack()
 
 #Botões.
 botao1 = tk.Button(master=container, text="Grafico 2", width=10, height=15, command=lambda: grafico1()).pack(side=tk.RIGHT)
-botao2 = tk.Button(master=container, text="Grafico 1", width=10, height=15).pack(side=tk.RIGHT, padx=2)
+botao2 = tk.Button(master=container, text="Grafico 1", width=10, height=15, command=lambda: grafico2()).pack(side=tk.RIGHT, padx=2)
 botao3 = tk.Button(master=container, text="Gerar", width=10, height=15, command=lambda: geraNovosDados(numeroDeProdutos, my_tree)).pack(side=tk.RIGHT)
 
 tk.mainloop()
