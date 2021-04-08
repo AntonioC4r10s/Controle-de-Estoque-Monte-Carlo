@@ -22,6 +22,7 @@ for i in range(0, len(lista[0])):
     if (i > 0 and i < 7):
         my_tree.column(cont[i], width=40, minwidth=25)
         my_tree.heading(cont[i], text=lista[0][i], anchor=tk.W)
+
     else:
         if(i>11):
             break
@@ -41,8 +42,8 @@ my_tree.pack(pady=20)
 container = tk.Frame(master=janela, bg="white", pady=2).pack()
 
 #Botões.
-botao1 = tk.Button(master=container, text="Grafico 2", width=10, height=15, command=lambda: grafico1()).pack(side=tk.RIGHT)
-botao2 = tk.Button(master=container, text="Grafico 1", width=10, height=15, command=lambda: grafico2()).pack(side=tk.RIGHT, padx=2)
+botao1 = tk.Button(master=container, text="Grafico 2", width=10, height=15, command=lambda: grafico2()).pack(side=tk.RIGHT)
+botao2 = tk.Button(master=container, text="Grafico 1", width=10, height=15, command=lambda: grafico1_2()).pack(side=tk.RIGHT, padx=2)
 botao3 = tk.Button(master=container, text="Gerar", width=10, height=15, command=lambda: geraNovosDados(numeroDeProdutos, my_tree)).pack(side=tk.RIGHT)
 
 tk.mainloop()

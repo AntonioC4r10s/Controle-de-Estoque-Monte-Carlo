@@ -4,6 +4,8 @@ from matplotlib import pyplot as plt
 import tkinter as tk
 from tkinter import ttk
 
+NUMERODEMESES = 6
+
 #Gerar um unmero aleatorio entre a e b.
 def numAleatorio(a, b):
     return random.randint(a, b)
@@ -64,7 +66,7 @@ def csvParaLista():
     return lista
 
 #Gerar grafico de proporção de produtos tipo A, B e C.
-def grafico1():
+def grafico2():
     grupos = ["A", "B", "C"]
     A = 0
     B = 0
@@ -99,7 +101,7 @@ def geraNovosDados(numeroDeProdutos, my_tree):
         my_tree.item(i, text=lista[i][0], values=listaAux)
 
 #Gerar grafico de Tradicional x MC
-def grafico2():
+def grafico1():
     lista = csvParaLista()
 
     mes_1 = 0
@@ -108,7 +110,7 @@ def grafico2():
     mes_4 = 0
     mes_5 = 0
     mes_6 = 0
-    meses =  [1,2,3,4,5,6]
+    meses =  [0,30,60,90,120,150]
     distNormal = [mes_1, mes_2, mes_3, mes_4, mes_5, mes_6]
     distMC = []
     somaMC = 0
@@ -131,7 +133,35 @@ def grafico2():
     plt.title("Tradicional x MC")
     plt.show()
 
+def grafico1_2():
+    lista = csvParaLista()
+    dias = []
+    dia = 0
+    produtosPorDia = []
+    mediaMensal = []
+
+    for i in range(1, 7):
+        mediaDeProdutos = 0
+        for j in range(1, len(lista)):
+            mediaDeProdutos += int(lista[j][i])
+        mediaMensal.append(mediaDeProdutos)
+
+    for i in range(0, NUMERODEMESES):
+        mediaDeProdutos = mediaMensal[i]/30
+        numeroDeProdutosDia = mediaMensal[i]
+        for j in range(0, 30):
+            dias.append(dia)
+            dia += 1
+            produtosPorDia.append(numeroDeProdutosDia)
+            numeroDeProdutosDia -= mediaDeProdutos
+    #print(mediaMensal)
+    #print(dias)
+    #print(produtosPorDia)
+
+    plt.plot(dias, produtosPorDia, "r")
+    plt.show()
+
 cont = ["#0", "#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8", "#9", "#10", "#11", "#12", "#13", "#14", "#15", "#16", "#17", "#18", "#19", "#20"]
 #print(csvParaLista()[0])
 
-#print(geraNovosDados(10, my_tree))
+#grafico1_2()
