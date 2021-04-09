@@ -9,8 +9,6 @@ janela.resizable(0, 0)
 janela.geometry("%dx%d" % (largura, altura))
 janela.config(bg="#ADD8E6")
 
-#Numero de produtos e passar o cvs para a lista para ser usada na Tree abaixo.
-numeroDeProdutos = 10
 lista = csvParaLista()
 
 #tabela.

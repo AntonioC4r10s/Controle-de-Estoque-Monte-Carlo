@@ -5,6 +5,7 @@ import tkinter as tk
 from tkinter import ttk
 
 NUMERODEMESES = 6
+numeroDeProdutos = 10
 
 #Gerar um unmero aleatorio entre a e b.
 def numAleatorio(a, b):
@@ -63,6 +64,7 @@ def csvParaLista():
 
     for linha in reader:
         lista.append(linha)
+    file.close()
     return lista
 
 #Gerar grafico de proporção de produtos tipo A, B e C.
@@ -94,7 +96,7 @@ def geraNovosDados(numeroDeProdutos, my_tree):
     lista = csvParaLista()
 
     # Adicionando intens na Tree.
-    for i in range(1, len(lista)):
+    for i in range(1, numeroDeProdutos):
         listaAux = []
         for j in range(1, len(lista[i])):
             listaAux.append(lista[i][j])
@@ -139,6 +141,9 @@ def grafico1_2():
     dia = 0
     produtosPorDia = []
     mediaMensal = []
+    mediaDiaTotal = 0
+    estoqueIdealTotal = 0
+    numeroDeProdutosNoEstoque = []
 
     for i in range(1, 7):
         mediaDeProdutos = 0
@@ -154,11 +159,25 @@ def grafico1_2():
             dia += 1
             produtosPorDia.append(numeroDeProdutosDia)
             numeroDeProdutosDia -= mediaDeProdutos
-    #print(mediaMensal)
-    #print(dias)
+
+    for i in range(1, numeroDeProdutos+1):
+        mediaDiaTotal += float(lista[i][9])
+        estoqueIdealTotal += float(lista[i][10])
+
+    numeroEstoqueAtual = estoqueIdealTotal
+    for i in range(0, (NUMERODEMESES*30)):
+        valorAdicional = 0
+        if(i == 0):
+            numeroDeProdutosNoEstoque.append(numeroEstoqueAtual)
+        else:
+            pass
+            numeroDeProdutosNoEstoque.append(numeroEstoqueAtual)
+    #print(numeroDeProdutosNoEstoque)
+    #print(len(numeroDeProdutosNoEstoque))
     #print(produtosPorDia)
 
     plt.plot(dias, produtosPorDia, "r")
+    plt.plot(dias, numeroDeProdutosNoEstoque, "blue")
     plt.show()
 
 cont = ["#0", "#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8", "#9", "#10", "#11", "#12", "#13", "#14", "#15", "#16", "#17", "#18", "#19", "#20"]
