@@ -24,7 +24,7 @@ def gera_dados(numerodeprodutos):
     numeroDeProdutosMax = 40
 
     for i in range(numerodeprodutos):
-        id = i + 1
+        ID: int = i + 1
         mes_1 = num_aleatorio(0, numeroDeProdutosMax)
         mes_2 = num_aleatorio(0, numeroDeProdutosMax)
         mes_3 = num_aleatorio(0, numeroDeProdutosMax)
@@ -52,7 +52,7 @@ def gera_dados(numerodeprodutos):
             estoqueIdeal = mediaDianum * 10
         estoqueIdeal = ("{0:.2f}".format(estoqueIdeal))
 
-        w.writerow([id, mes_1, mes_2, mes_3, mes_4, mes_5, mes_6, total, classificacao, mediaDia, estoqueIdeal])
+        w.writerow([ID, mes_1, mes_2, mes_3, mes_4, mes_5, mes_6, total, classificacao, mediaDia, estoqueIdeal])
     file.close()
     # restart_program()
 
@@ -194,5 +194,6 @@ def grafico_2():
     plt.show()
 
 
-CONTADORES = ["#0", "#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8", "#9", "#10", "#11", "#12", "#13", "#14", "#15", "#16",
-        "#17", "#18", "#19", "#20"]
+CONTADORES = ["#0", "#1", "#2", "#3", "#4", "#5", "#6", "#7", "#8", "#9", "#10", "#11", "#12", "#13", "#14", "#15",
+              "#16",
+              "#17", "#18", "#19", "#20"]
