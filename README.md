@@ -6,4 +6,4 @@ Foi usado esse [artigo](https://www.inovarse.org/sites/default/files/T16_171.pdf
 - [x] Adicionar uma interface simples.
 - [x] Criar uma tabela grafica e inserir os valores da planilha criada.
 - [x] Adicionar função para mostrar graficos nos botões.
-- [ ] Adicionar ao grafico 1 uma visão dos 180 dias.
+- [ ] Buscar melhorias.
