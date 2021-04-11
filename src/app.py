@@ -44,9 +44,11 @@ container = tk.Frame(master=janela, bg="white", pady=2).pack()
 # Botões.
 botao1 = tk.Button(master=container, text="Grafico 2", width=10, height=15, command=lambda: grafico_2()).pack(
     side=tk.RIGHT)
-botao2 = tk.Button(master=container, text="Grafico 1", width=10, height=15, command=lambda: grafico_1_2()).pack(
+botao2 = tk.Button(master=container, text="Grafico 1", width=10, height=15, command=lambda: grafico_3()).pack(
     side=tk.RIGHT, padx=2)
 botao3 = tk.Button(master=container, text="Gerar", width=10, height=15,
                    command=lambda: gera_novos_dados(NUMERODEPRODUTOS, my_tree)).pack(side=tk.RIGHT)
+labelQuantidadeDeProdutos = tk.Label(master=container, text=str(NUMERODEPRODUTOS) + " Produtos", bg='white').pack(
+    side=tk.LEFT)
 
 tk.mainloop()

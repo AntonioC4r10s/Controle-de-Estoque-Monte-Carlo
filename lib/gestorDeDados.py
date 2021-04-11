@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 
 NUMERODEMESES = 6
 NUMERODEPRODUTOS = 10
-
+NUMERODEPRODUTOSMAXIMO = 50
 
 # Gerar um numero aleatorio entre a e b.
 def num_aleatorio(a, b):
@@ -21,22 +21,20 @@ def gera_dados(numerodeprodutos):
     w.writerow(['Produto', '1', '2', '3', '4', '5', '6', 'Total', 'Classificacao', 'Media Dia',
                 'Estoque Ideal'])
 
-    numeroDeProdutosMax = 40
-
     for i in range(numerodeprodutos):
         ID: int = i + 1
-        mes_1 = num_aleatorio(0, numeroDeProdutosMax)
-        mes_2 = num_aleatorio(0, numeroDeProdutosMax)
-        mes_3 = num_aleatorio(0, numeroDeProdutosMax)
-        mes_4 = num_aleatorio(0, numeroDeProdutosMax)
-        mes_5 = num_aleatorio(0, numeroDeProdutosMax)
-        mes_6 = num_aleatorio(0, numeroDeProdutosMax)
+        mes_1 = num_aleatorio(0, NUMERODEPRODUTOSMAXIMO)
+        mes_2 = num_aleatorio(0, NUMERODEPRODUTOSMAXIMO)
+        mes_3 = num_aleatorio(0, NUMERODEPRODUTOSMAXIMO)
+        mes_4 = num_aleatorio(0, NUMERODEPRODUTOSMAXIMO)
+        mes_5 = num_aleatorio(0, NUMERODEPRODUTOSMAXIMO)
+        mes_6 = num_aleatorio(0, NUMERODEPRODUTOSMAXIMO)
         total = (mes_1 + mes_2 + mes_3 + mes_4 + mes_5 + mes_6)
         numParaClassif = random.random()
 
-        if numParaClassif < 0.25:
+        if numParaClassif < 0.2:
             classificacao = 'A'
-        elif numParaClassif < 0.6:
+        elif numParaClassif < 0.3:
             classificacao = 'B'
         else:
             classificacao = 'C'
@@ -115,7 +113,7 @@ def grafico_1():
     plt.show()
 
 
-def grafico_1_2():
+def grafico_2():
     lista = csv_para_lista()
     dias = []
     dia = 0
@@ -167,11 +165,14 @@ def grafico_1_2():
 
     plt.plot(dias, produtosPorDia, "r")
     plt.plot(dias, numeroDeProdutosNoEstoque, "blue")
+    plt.xlabel("Tempo - (dias)")
+    plt.ylabel("Nº de Produtos")
+    plt.title("Tradicional x MC")
     plt.show()
 
 
 # Gerar grafico de proporção de produtos tipo A, B e C.
-def grafico_2():
+def grafico_3():
     grupos = ["A", "B", "C"]
     A = 0
     B = 0
