@@ -3,8 +3,9 @@ import random
 from matplotlib import pyplot as plt
 
 NUMERODEMESES = 6
-NUMERODEPRODUTOS = 10
+NUMERODEPRODUTOS = 20
 NUMERODEPRODUTOSMAXIMO = 50
+
 
 # Gerar um numero aleatorio entre a e b.
 def num_aleatorio(a, b):
@@ -34,7 +35,7 @@ def gera_dados(numerodeprodutos):
 
         if numParaClassif < 0.2:
             classificacao = 'A'
-        elif numParaClassif < 0.3:
+        elif numParaClassif < 0.5:
             classificacao = 'B'
         else:
             classificacao = 'C'
@@ -148,15 +149,15 @@ def grafico_2():
         if i == 0:
             numeroDeProdutosNoEstoque.append(numeroEstoqueAtual)
         else:
-            if i % 8 == 0:
+            if i % 9 == 0:
                 for j in range(1, NUMERODEPRODUTOS):
                     if lista[j][8] == "C":
                         valorAdicional += float(lista[j][10])
-            if i % 18 == 0:
+            if i % 19 == 0:
                 for j in range(1, NUMERODEPRODUTOS):
                     if lista[j][8] == "B":
                         valorAdicional += float(lista[j][10])
-            if i % 28 == 0:
+            if i % 29 == 0:
                 for j in range(1, NUMERODEPRODUTOS):
                     if lista[j][8] == "A":
                         valorAdicional += float(lista[j][10])
@@ -192,6 +193,7 @@ def grafico_3():
     plt.bar(grupos, valores)
     plt.xlabel("Classificação")
     plt.ylabel("Proporção")
+    plt.title("Comparação entre categorias")
     plt.show()
 
 

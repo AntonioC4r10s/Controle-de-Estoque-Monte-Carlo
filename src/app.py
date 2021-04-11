@@ -4,7 +4,7 @@ from tkinter import ttk
 
 # Janela principal
 janela = tk.Tk()
-LARGURA = 625
+LARGURA = 645
 ALTURA = 300
 janela.title("Controle de Estoque")
 janela.resizable(0, 0)
@@ -16,13 +16,15 @@ lista = csv_para_lista()
 # tabela.
 my_tree = ttk.Treeview(janela)
 my_tree['columns'] = (lista[0])
+vsb = ttk.Scrollbar(janela, orient="vertical", command=my_tree.yview)
+my_tree.configure(yscrollcommand=vsb.set)
+vsb.place(x=LARGURA - 20, y=21, height=178 + 44)
 
 # Passando os dados da lista para a Tree.
 for i in range(0, len(lista[0])):
     if 0 < i < 7:
         my_tree.column(CONTADORES[i], width=40, minwidth=25)
         my_tree.heading(CONTADORES[i], text=lista[0][i], anchor=tk.W)
-
     else:
         if i > 11:
             break
