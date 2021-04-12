@@ -1,3 +1,5 @@
+from typing import List
+
 from lib.gestorDeDados import *
 import tkinter as tk
 from tkinter import ttk
@@ -32,11 +34,13 @@ for i in range(0, len(lista[0])):
         my_tree.heading(CONTADORES[i], text=lista[0][i], anchor=tk.N)
 # Adicionando intens na Tree.
 for i in range(1, len(lista)):
-    listaAux = []
+    listaAux: List[str] = []
     for j in range(1, len(lista[i])):
         listaAux.append(lista[i][j])
     my_tree.insert(parent="", index='end', iid=i, text=lista[i][0], values=listaAux)
 my_tree.pack(pady=20)
+
+gera_novos_dados(NUMERODEPRODUTOS, my_tree)
 
 # my_tree.item(1, values="0")
 

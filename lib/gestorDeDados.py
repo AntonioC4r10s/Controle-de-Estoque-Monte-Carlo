@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 
 NUMERODEMESES = 6
 NUMERODEPRODUTOS = 20
-NUMERODEPRODUTOSMAXIMO = 50
+NUMERODEPRODUTOSMAXIMO = 200
 
 
 # Gerar um numero aleatorio entre a e b.
